@@ -1,38 +1,506 @@
-.App {
+/* Aesthetic Art Journal Theme */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #2c1810 0%, #1a1a1a 50%, #2c1810 100%);
+  background-attachment: fixed;
+  color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text fill="%23ffffff10" font-size="20" y="50%">✨</text></svg>') repeat;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  background: linear-gradient(90deg, #4a3c2a 0%, #6b5b47 50%, #4a3c2a 100%);
+  padding: 30px 0;
+  border-bottom: 3px solid #8b7d6b;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  color: #f0e6d2;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  flex: 1;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.view-dropdown {
+  padding: 8px 12px;
+  background: rgba(240, 230, 210, 0.9);
+  color: #4a3c2a;
+  border: 2px solid #8b7d6b;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.view-dropdown:hover {
+  background: #f0e6d2;
+  transform: scale(1.05);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-content {
+  flex: 1;
+  padding: 50px 0;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.search-section {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.search-input {
+  padding: 15px;
+  width: 100%;
+  max-width: 400px;
+  border: 2px solid #8b7d6b;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+  font-size: 1em;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #d4a574;
+  box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+}
+
+.entry-form-section, .entry-list-section, .checklist-section {
+  margin-bottom: 50px;
+}
+
+.entry-form-section h2, .entry-list-section h2, .checklist-section h2 {
+  color: #d4a574;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.checklist-section p {
+  text-align: center;
+  color: #f0e6d2;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.checklist {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #f0e6d2, #e8dcc0);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid #8b7d6b;
+  animation: slideIn 0.8s ease-out;
+}
+
+.checklist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #4a3c2a;
+  font-size: 1.1em;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.checklist-item:hover {
+  transform: translateX(5px);
+}
+
+.checklist-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex: 1;
+}
+
+.checklist-item input {
+  display: none;
+}
+
+.checkmark {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #8b7d6b;
+  border-radius: 5px;
+  margin-right: 15px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.checklist-item input:checked + .checkmark {
+  background: #d4a574;
+  border-color: #d4a574;
+}
+
+.checklist-item input:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 5px;
+  color: #2c1810;
+  font-weight: bold;
+}
+
+.example-ref {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
+}
+
+.example-image {
+  width: 100px;
+  height: 75px;
+  border-radius: 10px;
+  border: 2px solid #8b7d6b;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.example-image:hover {
+  transform: scale(1.1);
+}
+
+.pinterest-link {
+  color: #d4a574;
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.pinterest-link:hover {
+  color: #b8956a;
+  text-decoration: underline;
+}
+
+.reset-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  background: #c0392b;
+  color: #f0e6d2;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.reset-btn:hover {
+  background: #a93226;
+  transform: translateY(-2px);
+}
+
+.entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background: linear-gradient(145deg, #3a2a1a, #2c1e10);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+  border: 2px solid #8b7d6b;
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.entry-form input, .entry-form textarea {
+  padding: 15px;
+  border: 2px solid #8b7d6b;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.entry-form input:focus, .entry-form textarea:focus {
+  outline: none;
+  border-color: #d4a574;
+  box-shadow: 0 0 10px rgba(212, 165, 116, 0.3);
+}
+
+.entry-form textarea {
+  min-height: 120px;
+}
+
+.image-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.image-input-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95em;
+  color: #f0e6d2;
+}
+
+.image-preview {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 15px;
+  margin-top: 10px;
+  border: 3px solid #d4a574;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.entry-form button {
+  padding: 15px;
+  background: linear-gradient(90deg, #d4a574 0%, #b8956a 100%);
+  color: #2c1810;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 500;
+  font-family: 'Playfair Display', serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.entry-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.entry-list {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.entry {
+  width: 320px;
+  padding: 25px;
+  background: linear-gradient(145deg, #f0e6d2, #e8dcc0);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.4s ease;
+  border: 1px solid #8b7d6b;
+  color: #2c1810;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.entry:hover {
+  transform: translateY(-10px) rotate(1deg);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.entry h3 {
+  margin: 0 0 15px 0;
+  color: #4a3c2a;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.entry p {
+  color: #4a3c2a;
+  line-height: 1.7;
+}
+
+.image-box {
+  border: 3px solid #d4a574;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.entry-image {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-source {
+  margin: 10px 0 0 0;
+  font-size: 0.9em;
+  color: #6b5b47;
+  text-align: center;
+  font-style: italic;
+}
+
+.entry button {
+  display: block;
+  margin: 15px auto 0 auto;
+  padding: 8px 16px;
+  background: #c0392b;
+  color: #f0e6d2;
+  border: none;
+  border-radius:15px;
+}
+/* Existing styles... (keep all previous CSS) */
+
+/* New: Enhanced hover for entry boxes */
+.entry {
+  /* Existing styles... */
+  cursor: pointer; /* Indicate clickable */
+  transition: all 0.4s ease; /* Smooth hover */
+}
+
+.entry:hover {
+  transform: translateY(-10px) rotate(1deg) scale(1.02); /* Lift, rotate, and slight scale */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* New: Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #f0e6d2, #e8dcc0);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.3s ease;
+  position: relative;
+  color: #2c1810;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: #4a3c2a;
+}
+
+.edit-form, .view-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-form input, .edit-form textarea {
+  padding: 10px;
+  border: 1px solid #8b7d6b;
+  border-radius: 8px;
+  background: #fff;
+  color: #2c1810;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.modal-buttons button:first-child {
+  background: #d4a574;
+  color: #2c1810;
+}
+
+.modal-buttons button:last-child {
+  background: #c0392b;
+  color: #f0e6d2;
+}
+
+/* Responsive for modal */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
   }
 }
