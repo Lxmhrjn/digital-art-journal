@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+https://lxmhrjn.github.io/digital-art-journal/
 
 
