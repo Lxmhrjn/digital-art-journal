@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/digital-art-journal/static/css/main.f248b280.css",
+    "main.js": "/digital-art-journal/static/js/main.1ceda59e.js",
+    "index.html": "/digital-art-journal/index.html",
+    "main.f248b280.css.map": "/digital-art-journal/static/css/main.f248b280.css.map",
+    "main.1ceda59e.js.map": "/digital-art-journal/static/js/main.1ceda59e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f248b280.css",
+    "static/js/main.1ceda59e.js"
+  ]
+}
