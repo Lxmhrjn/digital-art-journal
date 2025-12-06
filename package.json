@@ -1,7 +1,8 @@
 {
   "name": "art",
   "version": "0.1.0",
-  "homepage": "https://alexmaharjan.github.io/digital-art-journal"
+  "homepage": "https://lxmhrjn.github.io/digital-art-journal",
+
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
